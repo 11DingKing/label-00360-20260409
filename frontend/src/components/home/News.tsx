@@ -1,46 +1,19 @@
 'use client';
 
 import { useToast } from '@/components/ui/Toast';
+import { NewsItem } from '@/lib/types';
 
-const news = [
-  {
-    title: '公司荣获2025年度最佳科技创新企业奖',
-    shortTitle: '荣获2025最佳科技创新企业奖',
-    date: '2025-01-15',
-    category: '公司新闻',
-    excerpt: '在刚刚结束的行业峰会上，我公司凭借卓越的技术创新能力荣获殊荣',
-    featured: true,
-  },
-  {
-    title: '新一代AI智能平台正式发布',
-    date: '2025-01-10',
-    category: '产品动态',
-    excerpt: '全新AI平台上线，为企业提供更强大的智能化能力',
-    featured: false,
-  },
-  {
-    title: '与某知名企业达成战略合作',
-    date: '2025-01-05',
-    category: '合作动态',
-    excerpt: '双方将在数字化转型领域展开深度合作',
-    featured: false,
-  },
-  {
-    title: '2024年度技术白皮书发布',
-    date: '2024-12-28',
-    category: '行业资讯',
-    excerpt: '深入分析企业数字化转型趋势和最佳实践',
-    featured: false,
-  },
-];
+interface NewsProps {
+  news: NewsItem[];
+}
 
-export default function News() {
+export default function News({ news }: NewsProps) {
   const { showToast } = useToast();
   const featuredNews = news.find((n) => n.featured);
   const otherNews = news.filter((n) => !n.featured);
 
   const handleNewsClick = (title: string) => {
-    showToast(`「${title}」详情正在开发中，敬请期待`);
+    showToast('「' + title + '」详情正在开发中，敬请期待');
   };
 
   const handleViewAll = () => {
@@ -49,13 +22,11 @@ export default function News() {
 
   return (
     <section className="relative py-32 bg-gray-900 overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px] -translate-y-1/2" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
           <div>
             <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium text-cyan-400 bg-cyan-400/10 border border-cyan-400/20 mb-6">
@@ -79,19 +50,25 @@ export default function News() {
           </button>
         </div>
 
-        {/* News grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Featured news */}
           {featuredNews && (
             <div 
               className="group relative rounded-2xl sm:rounded-3xl overflow-hidden lg:row-span-2 cursor-pointer"
               onClick={() => handleNewsClick(featuredNews.title)}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-600 to-blue-600" />
+              {featuredNews.image ? (
+                <img
+                  src={featuredNews.image}
+                  alt={featuredNews.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-600 to-blue-600" />
+              )}
               <div
                 className="absolute inset-0 opacity-20"
                 style={{
-                  backgroundImage: `linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%)`,
+                  backgroundImage: 'linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%)',
                   backgroundSize: '200% 200%',
                 }}
               />
@@ -117,11 +94,10 @@ export default function News() {
             </div>
           )}
 
-          {/* Other news */}
           <div className="space-y-4 sm:space-y-6">
             {otherNews.map((item) => (
               <article
-                key={item.title}
+                key={item.id}
                 className="group glass rounded-2xl p-4 sm:p-6 hover:bg-white/5 transition-colors cursor-pointer"
                 onClick={() => handleNewsClick(item.title)}
               >
@@ -138,11 +114,19 @@ export default function News() {
                     </h3>
                     <p className="text-gray-400 text-xs sm:text-sm line-clamp-1 sm:line-clamp-2">{item.excerpt}</p>
                   </div>
-                  <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-cyan-500/20 group-hover:text-cyan-400 transition-colors">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt=""
+                      className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover"
+                    />
+                  ) : (
+                    <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:bg-cyan-500/20 group-hover:text-cyan-400 transition-colors">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  )}
                 </div>
               </article>
             ))}

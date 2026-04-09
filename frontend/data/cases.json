@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1",
+    "title": "某大型银行数字化转型",
+    "category": "金融科技",
+    "description": "构建智能风控系统，实现毫秒级风险识别，不良贷款率下降40%",
+    "stats": {
+      "value": "40%",
+      "label": "风险降低"
+    },
+    "gradient": "from-blue-600 to-cyan-500",
+    "size": "large",
+    "image": null,
+    "order": 1
+  },
+  {
+    "id": "2",
+    "title": "智能制造云平台",
+    "category": "工业互联网",
+    "description": "打造工业互联网平台，连接10万+设备",
+    "stats": {
+      "value": "30%",
+      "label": "效率提升"
+    },
+    "gradient": "from-cyan-500 to-teal-500",
+    "size": "small",
+    "image": null,
+    "order": 2
+  },
+  {
+    "id": "3",
+    "title": "新零售数据中台",
+    "category": "零售电商",
+    "description": "统一数据资产，实现精准营销",
+    "stats": {
+      "value": "50%",
+      "label": "转化提升"
+    },
+    "gradient": "from-orange-500 to-amber-500",
+    "size": "small",
+    "image": null,
+    "order": 3
+  },
+  {
+    "id": "4",
+    "title": "智慧医疗解决方案",
+    "category": "医疗健康",
+    "description": "基于AI的辅助诊断系统，服务1000+医疗机构，诊断准确率达98%",
+    "stats": {
+      "value": "98%",
+      "label": "诊断准确"
+    },
+    "gradient": "from-green-500 to-emerald-500",
+    "size": "large",
+    "image": null,
+    "order": 4
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "title": "公司荣获2025年度最佳科技创新企业奖",
+    "shortTitle": "荣获2025最佳科技创新企业奖",
+    "date": "2025-01-15",
+    "category": "公司新闻",
+    "excerpt": "在刚刚结束的行业峰会上，我公司凭借卓越的技术创新能力荣获殊荣",
+    "featured": true,
+    "image": null,
+    "order": 1
+  },
+  {
+    "id": "2",
+    "title": "新一代AI智能平台正式发布",
+    "shortTitle": "新一代AI智能平台发布",
+    "date": "2025-01-10",
+    "category": "产品动态",
+    "excerpt": "全新AI平台上线，为企业提供更强大的智能化能力",
+    "featured": false,
+    "image": null,
+    "order": 2
+  },
+  {
+    "id": "3",
+    "title": "与某知名企业达成战略合作",
+    "shortTitle": "与知名企业达成战略合作",
+    "date": "2025-01-05",
+    "category": "合作动态",
+    "excerpt": "双方将在数字化转型领域展开深度合作",
+    "featured": false,
+    "image": null,
+    "order": 3
+  },
+  {
+    "id": "4",
+    "title": "2024年度技术白皮书发布",
+    "shortTitle": "2024技术白皮书发布",
+    "date": "2024-12-28",
+    "category": "行业资讯",
+    "excerpt": "深入分析企业数字化转型趋势和最佳实践",
+    "featured": false,
+    "image": null,
+    "order": 4
+  }
+]
